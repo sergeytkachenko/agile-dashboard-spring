@@ -39,7 +39,7 @@ class TaskController {
         }
     }
 
-    @GetMapping('/add')
+    @PostMapping('/add')
     Task add(HttpServletRequest request) {
         String name = request.getParameter('name')
         String description = request.getParameter('description')
