@@ -11,4 +11,9 @@ class Task {
 
     String name
     String description
+
+    long index
+
+    String sprintId
+    String groupId
 }
