@@ -1,15 +1,12 @@
 package board.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
 
-@Entity
+@Document(collection = "sprint")
 class Sprint {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     long id
 
     String name

@@ -1,15 +1,13 @@
 package board.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
 
-@Entity
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
+
+@Document(collection = "task-group")
 class TaskGroup {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     long id
 
     String name
