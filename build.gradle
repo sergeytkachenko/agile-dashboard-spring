@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://repo.spring.io/libs-snapshot' }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT"
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.0-alpha-1'
+
+    compile group: 'org.springframework.boot', name:'spring-boot-starter-data-rest', version: '1.5.7.RELEASE'
+    compile group: 'org.springframework.boot', name:'spring-boot-starter-data-jpa', version: '1.5.7.RELEASE'
+    compile group: 'com.h2database', name:'h2', version: '1.4.196'
+}
