@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 class Task {
 
     @Id
-    long id
+    String id
 
     String name
     String description

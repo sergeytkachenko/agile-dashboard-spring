@@ -7,10 +7,11 @@ import org.springframework.data.mongodb.core.mapping.Document
 class Sprint {
 
     @Id
-    long id
+    String id
 
     String name
 
     Date dateStart
+
     Date dateEnd
 }

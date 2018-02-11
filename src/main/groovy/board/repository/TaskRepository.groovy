@@ -1,10 +1,8 @@
 package board.repository
 
 import board.model.Task
-import org.springframework.data.repository.PagingAndSortingRepository
-import org.springframework.data.rest.core.annotation.RepositoryRestResource
+import org.springframework.data.mongodb.repository.MongoRepository
 
-@RepositoryRestResource(collectionResourceRel = "tasks", path = "tasks")
-interface TaskRepository extends PagingAndSortingRepository<Task, Long> {
+interface TaskRepository extends MongoRepository<Task, Long> {
 
 }

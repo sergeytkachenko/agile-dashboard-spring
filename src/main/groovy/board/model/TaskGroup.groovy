@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 class TaskGroup {
 
     @Id
-    long id
+    String id
 
     String name
 }

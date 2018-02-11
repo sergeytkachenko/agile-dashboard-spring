@@ -1,10 +1,9 @@
 package board.repository
 
 import board.model.Sprint
-import org.springframework.data.repository.PagingAndSortingRepository
-import org.springframework.data.rest.core.annotation.RepositoryRestResource
+import org.springframework.data.mongodb.repository.MongoRepository
 
-@RepositoryRestResource(collectionResourceRel = "sprints", path = "sprints")
-interface SprintRepository extends PagingAndSortingRepository<Sprint, Long> {
+interface SprintRepository extends MongoRepository<Sprint, Long> {
 
+    Sprint findByDateStartLessThanEqualAndDateEndGreaterThanEqual(Date dateStart, Date dateEnd)
 }
