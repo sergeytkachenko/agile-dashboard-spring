@@ -19,7 +19,7 @@ class TokenFilter extends GenericFilterBean {
     String LOGIN_URI = '/login'
     String WS_URI = '/ws/'
 
-    List<String> allowUrls = [WS_URI, LOGIN_URI]
+    List<String> allowUrls = [WS_URI, LOGIN_URI, "/${LOGIN_URI}"]
 
     @Autowired
     TokenService tokenService
