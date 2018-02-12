@@ -8,8 +8,10 @@ import board.repository.SprintRepository
 import board.repository.TaskRepository
 import board.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
@@ -17,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 import javax.servlet.http.HttpServletRequest
-import javax.xml.ws.http.HTTPException
 
 @RestController
 @RequestMapping("/task")
@@ -78,5 +79,11 @@ class TaskController {
             task.groupId = groupId
             taskRepository.save(task)
         }
+    }
+
+    @DeleteMapping('/remove/{id}')
+    Task remove(@PathVariable String id) {
+        Task task = taskRepository.findById(id)
+        taskRepository.delete(task)
     }
 }
