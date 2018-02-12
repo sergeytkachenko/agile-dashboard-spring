@@ -1,9 +1,12 @@
 package board.controller
 
+import board.auth.TokenService
 import board.model.Sprint
 import board.model.Task
+import board.model.User
 import board.repository.SprintRepository
 import board.repository.TaskRepository
+import board.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
@@ -21,19 +24,23 @@ import javax.xml.ws.http.HTTPException
 class TaskController {
 
     @Autowired
+    TokenService tokenService
+
+    @Autowired
+    UserRepository userRepository
+
+    @Autowired
     TaskRepository taskRepository
 
     @Autowired
     SprintRepository sprintRepository
 
-    @GetMapping("/all")
-    List<Task> all() {
-        return taskRepository.findAll()
-    }
-
     @GetMapping("/current-sprint")
-    List<Task> current() {
-        Sprint sprint = sprintRepository.findByDateStartLessThanEqualAndDateEndGreaterThanEqual(new Date(), new Date())
+    List<Task> current(@RequestHeader("token") String token) {
+        String userId = tokenService.getUserId(token)
+        User user = userRepository.findOne(userId)
+        Sprint sprint = sprintRepository.findByDateStartLessThanEqualAndDateEndGreaterThanEqualAndWorkspaceId(new Date(),
+                new Date(), user.workspaceId)
         if (sprint) {
             return taskRepository.findBySprintId(sprint.id)
         }

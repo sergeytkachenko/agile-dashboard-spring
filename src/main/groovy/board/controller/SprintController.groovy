@@ -18,10 +18,10 @@ class SprintController {
     TokenService tokenService
 
     @Autowired
-    SprintRepository sprintRepository
+    UserRepository userRepository
 
     @Autowired
-    UserRepository userRepository
+    SprintRepository sprintRepository
 
     @RequestMapping("/all")
     List<Sprint> all(@RequestHeader("token") String token) {
