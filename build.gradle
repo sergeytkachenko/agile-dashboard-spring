@@ -30,4 +30,5 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.2.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.1.RELEASE'
     compile group: 'com.h2database', name:'h2', version: '1.4.196'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'
 }
