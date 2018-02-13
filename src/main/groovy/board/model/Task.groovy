@@ -14,6 +14,8 @@ class Task {
 
     long index
 
+    String[] tags
+
     String sprintId
     String groupId
 }

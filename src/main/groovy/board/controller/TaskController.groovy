@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -51,21 +52,24 @@ class TaskController {
     Task add(HttpServletRequest request) {
         String name = request.getParameter('name')
         String description = request.getParameter('description')
+        String[] tags = request.getParameterMap().get('tags[]')
         String sprintId = request.getParameter('sprintId')
-        Task task = new Task(name: name, description: description, sprintId: sprintId)
+        Task task = new Task(name: name, description: description, tags: tags, sprintId: sprintId)
         taskRepository.save(task)
         return task
     }
 
-    @PostMapping('/save')
+    @PutMapping('/save')
     Task save(HttpServletRequest request) {
         String id = request.getParameter('id')
         String name = request.getParameter('name')
         String description = request.getParameter('description')
+        String[] tags = request.getParameterMap().get('tags[]')
         String sprintId = request.getParameter('sprintId')
         Task task = taskRepository.findById(id)
         task.name = name
         task.description = description
+        task.tags = tags
         task.sprintId = sprintId
         taskRepository.save(task)
         return task
